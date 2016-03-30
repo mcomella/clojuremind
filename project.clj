@@ -1,6 +1,6 @@
 (defproject clojuremind "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Single player mastermind"
+  :url "https://github.com/mcomella/clojuremind"
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.8.0"]]

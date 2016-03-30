@@ -1,29 +1,16 @@
 # clojuremind
+Or open it, maybe...
 
-FIXME: description
+Single player mastermind implemented in clojure -- a learning project.
 
-## Installation
+## Development
+Run:
 
-Download from http://example.com/FIXME.
+    lein run
 
-## Usage
+Test:
 
-FIXME: explanation
+    lein test
 
-    $ java -jar mastermind-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+## Publish
+TODO!
