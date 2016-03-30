@@ -1,4 +1,4 @@
-(ns mastermind.core
+(ns clojuremind.core
   (:gen-class))
 
 (defn -main

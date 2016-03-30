@@ -1,4 +1,4 @@
-# mastermind
+# clojuremind
 
 FIXME: description
 

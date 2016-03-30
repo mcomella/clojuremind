@@ -1,4 +1,4 @@
-(ns mastermind.board) ; TODO: gen-class?
+(ns clojuremind.board) ; TODO: gen-class?
 
 (defn gen-initial [row-count solution] ; TODO: Validate solution.
   {:solution solution

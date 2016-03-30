@@ -1,6 +1,6 @@
-(ns mastermind.board-test
+(ns clojuremind.board-test
   (:require [clojure.test :refer :all]
-            [mastermind.board :refer :all]))
+            [clojuremind.board :refer :all]))
 
 (deftest test-gen-initial
   (testing "Generated initial board"
