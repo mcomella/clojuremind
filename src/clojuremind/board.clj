@@ -15,8 +15,8 @@
   (when-input-valid
     solution
     {:solution solution
-     :play-field (into [] (take row-count (repeat {:guesses []
-                                                   :matches []})))}))
+     :play-field (into [] (repeat row-count {:guesses []
+                                             :matches []}))}))
 
 (defn board-state [board] ; TODO: Better to store with board to prevent re-computation?
   "Returns board state as :victory, :loss, or :in-progress"
