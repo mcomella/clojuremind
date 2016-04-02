@@ -61,15 +61,13 @@
       (recur rem-guesses rem-matches (inc i)))))
 
 ;;; INPUT
-(defn- valid-input? [ext-coll]
-  (and (= 4 (count ext-coll))
-       (every? #(get ext-to-int %) ext-coll)))
-
-(defn prompt-for-row []
+(defn prompt-for-row [] ; TODO: Remove redundancies with macro.
   (println "Enter a guess!")
   (let [input (read-line)
-        clean-input (upper-case (str/replace input " " ""))]
-    (if-not (valid-input? clean-input)
+        clean-input (upper-case (str/replace input " " ""))
+        valid-input? (and (= 4 (count clean-input))
+                          (every? #(get ext-to-int %) clean-input))]
+    (if-not valid-input?
       (do
         (println "Invalid input.")
         (recur))
