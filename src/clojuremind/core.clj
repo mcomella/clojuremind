@@ -12,7 +12,7 @@
   (let [m (kw counts)]
     (list (:min m) (:max m))))
 
-(defn run-game [board]
+(defn run-game []
   (let [row-cnt (apply cm.io/prompt-num-rows (counts-min-max :rows))
         color-cnt (apply cm.io/prompt-num-color (counts-min-max :colors))
         solution (ai/gen-solution color-cnt)
@@ -27,4 +27,4 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (run-game (board-ns/gen-initial 6 [0 0 0 0])))
+  (run-game))
