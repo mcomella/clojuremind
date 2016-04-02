@@ -40,4 +40,4 @@
     input
     (let [next-row (next-row-ind board)
           inserted-into-guesses (update-in board [:guesses next-row] #(into % input))]
-      (update-matches next-row-ind inserted-into-guesses))))
+      (update-matches next-row inserted-into-guesses))))
