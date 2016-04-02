@@ -19,7 +19,7 @@
       (condp = (board-state board)
         :victory (println "You win!")
         :loss (println "You lose!")
-        (recur (board-ns/insert-into board (cm.io/prompt-for-row)))))))
+        (recur (board-ns/insert-into board (cm.io/prompt-for-row color-cnt)))))))
 
 (defn -main
   "I don't do a whole lot ... yet."

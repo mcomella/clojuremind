@@ -21,11 +21,6 @@
                         []
                         (keys colors)))
 
-; {\B 0 ...}
-(def ext-to-int (reduce (fn [acc color] (assoc acc color (count acc)))
-                        {}
-                        int-to-ext))
-
 ;;; OUTPUT
 (defn- colorize [s]
   (let [key (first s)
@@ -61,18 +56,21 @@
       (recur rem-guesses rem-matches (inc i)))))
 
 ;;; INPUT
-(defn prompt-for-row [] ; TODO: Remove redundancies with macro.
-  (println "Enter a guess!")
-  (let [input (read-line)
-        clean-input (upper-case (str/replace input " " ""))
-        valid-input? (and (= 4 (count clean-input))
-                          (every? #(get ext-to-int %) clean-input))]
-    (if-not valid-input?
-      (do
-        (println "Invalid input.")
-        (recur))
-      (let [internal-coll (map (partial get ext-to-int) clean-input)]
-        internal-coll))))
+(defn prompt-for-row [num-colors] ; TODO: Remove redundancies with macro.
+  (let [ext-to-int (reduce (fn [acc color] (assoc acc color (count acc)))
+                           {}
+                           (take num-colors int-to-ext))] ; TODO: Better not to recalculate every time. Store in board?
+    (println (str "Enter a guess! [" (apply str (interpose \space (keys ext-to-int))) "]"))
+    (let [input (read-line)
+          clean-input (upper-case (str/replace input " " ""))
+          valid-input? (and (= 4 (count clean-input))
+                            (every? #(get ext-to-int %) clean-input))]
+      (if-not valid-input?
+        (do
+          (println "Invalid input.")
+          (recur num-colors))
+        (let [internal-coll (map (partial get ext-to-int) clean-input)]
+          internal-coll)))))
 
 (defn- prompt-min-max [s min max]
   (println (str s " [" min " - " max "]"))
