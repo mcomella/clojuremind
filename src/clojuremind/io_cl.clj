@@ -74,8 +74,8 @@
       (let [internal-coll (map (partial get ext-to-int) clean-input)]
         internal-coll))))
 
-(defn prompt-num-color [min max]
-  (println (str "How many colors would you like to play with? [" min " - " max "]"))
+(defn- prompt-min-max [s min max]
+  (println (str s " [" min " - " max "]"))
   (let [clean-input (try (Integer. (re-find #"\d+" (read-line)))
                       (catch NumberFormatException e nil))
         valid-input? (and (not (nil? clean-input))
@@ -84,4 +84,10 @@
       clean-input
       (do
         (println "Invalid input.")
-        (recur min max)))))
+        (recur s min max)))))
+
+(defn prompt-num-color [min max]
+  (prompt-min-max "How many colors would you like to play with?" min max))
+
+(defn prompt-num-rows [min max]
+  (prompt-min-max "How many rows would you like to play with?" min max))
