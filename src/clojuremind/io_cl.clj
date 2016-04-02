@@ -67,13 +67,11 @@
 
 (defn prompt-for-row []
   (println "Enter a guess!")
-  (flush)
   (let [input (read-line)
         clean-input (upper-case (str/replace input " " ""))]
     (if-not (valid-input? clean-input)
       (do
         (println "Invalid input.")
-        (flush)
         (recur))
       (let [internal-coll (map (partial get ext-to-int) clean-input)]
         internal-coll))))
