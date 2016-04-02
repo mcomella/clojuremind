@@ -22,14 +22,18 @@
                         (keys colors)))
 
 ;;; OUTPUT
-(defn- colorize [s]
+(defn- colorize [s] ; TODO: Should be in own namespace? Hard to share data structures.
   (let [key (first s)
         esc (get ext-to-esc key)]
     (if (nil? esc)
       s
       (str esc s color-reset))))
 
-(defn- pr-row [ind guesses matches]
+(defn int-to-ext-colored [coll]
+  (let [color-str (comp colorize str)]
+    (mapv (fn [v] (color-str (get int-to-ext v))) coll)))
+
+(defn- pr-row [ind guesses matches] ; TODO: More flexible to return strings, rather than print.
   (defn- fill-empty [coll] (take 4 (concat coll (repeat "-"))))
   (let [ext-guesses (fill-empty guesses)
         ext-matches (fill-empty matches)]
