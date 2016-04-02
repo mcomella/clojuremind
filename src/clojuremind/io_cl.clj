@@ -1,5 +1,5 @@
 (ns clojuremind.io-cl ; TODO: gen-class?
-  (:require [clojure.string :refer [upper-case]]))
+  (:require [clojure.string :as str :refer [upper-case]]))
 
 (def colors {:blue "\u001B[34m" ; TODO: validate no same first char?
              :red "\u001B[31m"
@@ -59,3 +59,21 @@
     (println " ") ; blank row
     (if (not-empty rem-guesses)
       (recur rem-guesses rem-matches (inc i)))))
+
+;;; INPUT
+(defn- valid-input? [ext-coll]
+  (and (= 4 (count ext-coll))
+       (every? #(get ext-to-int %) ext-coll)))
+
+(defn prompt-for-row []
+  (println "Enter a guess!")
+  (flush)
+  (let [input (read-line)
+        clean-input (upper-case (str/replace input " " ""))]
+    (if-not (valid-input? clean-input)
+      (do
+        (println "Invalid input.")
+        (flush)
+        (recur))
+      (let [internal-coll (map (partial get ext-to-int) clean-input)]
+        internal-coll))))
