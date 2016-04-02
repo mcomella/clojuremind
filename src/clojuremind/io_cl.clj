@@ -9,19 +9,19 @@
              :cyan "\u001B[36m"})
 (def color-reset "\u001B[0m")
 
-(def keyword-to-char (comp upper-case second str))
+(def keyword-to-char (comp first seq char-array upper-case second str))
 
-; {\b "esc-str" ...}
+; {\B "esc-str" ...}
 (def ext-to-esc (reduce (fn [acc [color esc]] (assoc acc (keyword-to-char color) esc))
                         {}
                         colors))
 
-; [\b ...] indices are internal values
+; [\B ...] indices are internal values
 (def int-to-ext (reduce (fn [acc color] (conj acc (keyword-to-char color)))
                         []
                         (keys colors)))
 
-; {\b 0 ...}
+; {\B 0 ...}
 (def ext-to-int (reduce (fn [acc color] (assoc acc color (count acc)))
                         {}
                         int-to-ext))
