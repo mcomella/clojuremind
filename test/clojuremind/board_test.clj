@@ -8,13 +8,13 @@
 (def initial-board (gen-initial initial-row-cnt initial-solution))
 
 (deftest test-gen-initial
-  (let [{actual-sol :solution field :play-field} initial-board
+  (let [{actual-sol :solution guesses :guesses matches :matches} initial-board
         row-cnt initial-row-cnt]
     (testing "Generated initial board"
       (testing "is correct size"
-        (is (= row-cnt (count field))))
+        (is (= row-cnt (count guesses) (count matches))))
       (testing "contains no matches and guesses"
-        (let [merged-match-guess-rows (map #(flatten (vals %)) field)]
+        (let [merged-match-guess-rows (into guesses matches)]
           (is (every? #(empty? %) merged-match-guess-rows))))
       (testing "contains same solution as argument"
         (is (= initial-solution actual-sol))))))
@@ -39,7 +39,7 @@
     (testing "in progress when"
       (testing "first generated"
         (is (= :in-progress (board-state initial-board))))
-      (testing "non-winning/losing row inserted"
+      (testing "non-winning row inserted"
         (is (= :in-progress (board-state (insert-into initial-board not-solution))))))
     (testing "victory when solution is inserted"
       (testing "first"
