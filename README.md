@@ -5,14 +5,15 @@ Single player mastermind implemented in clojure -- a learning project.
 
 ![screenshot](https://raw.githubusercontent.com/mcomella/clojuremind/master/docs/screenshot.png)
 
+## Play! (without clojure installed!)
+
+    java -jar dist/clojuremind*.jar
+
 ## Development
-Run:
+With leiningen installed, run with:
 
     lein run
 
 Test:
 
     lein test
-
-## Publish
-TODO!
