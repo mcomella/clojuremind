@@ -59,6 +59,11 @@
     (if (not-empty rem-guesses)
       (recur rem-guesses rem-matches (inc i)))))
 
+(defn prn-desc []
+  (println "1: color and position match")
+  (println "0: color match")
+  (println)) ; blank
+
 ;;; INPUT
 (defn prompt-for-row [num-colors] ; TODO: Remove redundancies with macro.
   (let [ext-to-int (reduce (fn [acc color] (assoc acc color (count acc)))
