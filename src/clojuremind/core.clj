@@ -20,7 +20,7 @@
     (loop [board (board-ns/gen-initial row-cnt solution)]
       (println) ; Blank after input
       (cm.io/prn-desc)
-      (cm.io/pr-board board)
+      (cm.io/prn-board board)
       (condp = (board-state board)
         :victory (println "You win!")
         :loss (println "You lose! Solution was:" printable-solution)

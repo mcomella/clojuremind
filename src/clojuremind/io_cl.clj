@@ -50,7 +50,7 @@
     (pr-match 1)
     (println)))
 
-(defn pr-board [board]
+(defn prn-board [board]
   (loop [[guesses & rem-guesses] (:guesses board)
          [matches & rem-matches] (:matches board)
           i 0]
