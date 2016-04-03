@@ -1,4 +1,4 @@
-(defproject clojuremind "0.1.0-SNAPSHOT"
+(defproject clojuremind "0.1.0"
   :description "Single player mastermind"
   :url "https://github.com/mcomella/clojuremind"
   :license {:name "MIT License"
