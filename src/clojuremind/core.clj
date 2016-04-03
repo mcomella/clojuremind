@@ -18,6 +18,7 @@
         solution (ai/gen-solution color-cnt)
         printable-solution (cm.io/int-to-ext-colored solution)]
     (loop [board (board-ns/gen-initial row-cnt solution)]
+      (println) ; Blank after input
       (cm.io/pr-board board)
       (condp = (board-state board)
         :victory (println "You win!")
